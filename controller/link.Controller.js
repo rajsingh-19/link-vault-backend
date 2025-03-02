@@ -8,7 +8,6 @@ const {
   createClick,
   getNoOfClicksForSocialLinksByUserId,
   getNoOfClicksForShopLinksByUserId,
-  getAllLinksByUserId,
   getTopLinksByClicks,
   getClicksByAppTypeForSocialLinks,
   getClicksByUserDevice,
@@ -83,22 +82,6 @@ const getLinkHandler = async (req, res) => {
   }
 };
 
-const getAllLinksByUserIdHandler = async (req, res) => {
-  const { userId } = req.params;
-
-  try {
-    const links = await getAllLinksByUserId(userId);
-    return res
-      .status(200)
-      .json({ message: 'Links retrieved successfully', data: links });
-  } catch (error) {
-    console.error(error);
-    return res
-      .status(error.status || 500)
-      .json({ message: error.message || 'An error occurred' });
-  }
-};
-
 const createClickHandler = async (req, res) => {
   const { linkId } = req.params;
 
@@ -146,7 +129,8 @@ const createClickHandler = async (req, res) => {
       ipAddress: cleanedIpAddress, // Ensure it's not undefined
     });
 
-    return res.redirect(originalUrl);
+    return res.json({ redirectUrl: originalUrl });
+    // return res.redirect(originalUrl);
   } catch (error) {
     console.error(error);
     return res
@@ -291,7 +275,6 @@ module.exports = {
   updateLinkHandler,
   deleteLinkHandler,
   getLinkHandler,
-  getAllLinksByUserIdHandler,
   createClickHandler,
   getNoOfClicksForSocialLinksByUserIdHandler,
   getNoOfClicksForShopLinksByUserIdHandler,

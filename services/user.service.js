@@ -107,7 +107,8 @@ const infoUser = async (userId) => {
     userId: user._id,
     profileImgUrl: user.profileImgUrl,
     bio: user.bio,
-    bannerColor: user.bannerColor
+    bannerColor: user.bannerColor,
+    userName: user.userName
   };
 };
 

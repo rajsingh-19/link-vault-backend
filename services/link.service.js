@@ -7,8 +7,8 @@ const createLink = async (title, url, linkCategory, appType, userId) => {
     throw error;
   }
 
-  if (linkCategory === 'Social' && !appType) {
-    const error = new Error('appType is required for Social links');
+  if (linkCategory === 'link' && !appType) {
+    const error = new Error('appType is required for link links');
     error.status = 400;
     throw error;
   }
@@ -31,8 +31,8 @@ const updateLink = async (id, updateData) => {
     throw error;
   }
 
-  if (updateData.linkCategory === 'Social' && !updateData.appType) {
-    const error = new Error('appType is required for Social links');
+  if (updateData.linkCategory === 'link' && !updateData.appType) {
+    const error = new Error('appType is required for link');
     error.status = 400;
     throw error;
   }
@@ -65,18 +65,6 @@ const getLink = async (id) => {
   return link;
 };
 
-const getAllLinksByUserId = async (userId) => {
-  const links = await LinksModel.find({ userId });
-
-  if (!links || links.length === 0) {
-    const error = new Error('No links found for this user');
-    error.status = 404;
-    throw error;
-  };
-
-  return links;
-};
-
 const createClick = async (linkId, { userDevice, ipAddress }) => {
   const link = await LinksModel.findById(linkId);
   if (!link) {
@@ -93,10 +81,10 @@ const createClick = async (linkId, { userDevice, ipAddress }) => {
 };
 
 const getNoOfClicksForSocialLinksByUserId = async (userId) => {
-  const userLinks = await LinksModel.find({ userId, linkCategory: 'Social' });
+  const userLinks = await LinksModel.find({ userId, linkCategory: 'link' });
 
   if (!userLinks || userLinks.length === 0) {
-    const error = new Error('No social links found for the user');
+    const error = new Error('No links found for the user');
     error.status = 404;
     throw error;
   }
@@ -113,7 +101,7 @@ const getLinksForSocialByUserId = async (userId) => {
   const userLinks = await LinksModel.find({ userId, linkCategory: 'link' });
 
   if (!userLinks || userLinks.length === 0) {
-    const error = new Error('No social links found for the user');
+    const error = new Error('No links found for the user');
     error.status = 404;
     throw error;
   }
@@ -134,7 +122,7 @@ const getLinksForShopByUserId = async (userId) => {
 };
 
 const getNoOfClicksForShopLinksByUserId = async (userId) => {
-  const userLinks = await LinksModel.find({ userId, linkCategory: 'Shop' });
+  const userLinks = await LinksModel.find({ userId, linkCategory: 'shop' });
 
   if (!userLinks || userLinks.length === 0) {
     const error = new Error('No shop links found for the user');
@@ -216,10 +204,10 @@ const getClicksByUserDevice = async (userId) => {
 
 const getClicksByAppTypeForSocialLinks = async (userId) => {
   // Fetch all links associated with the userId where linkCategory is 'Social'
-  const socialLinks = await LinksModel.find({ userId, linkCategory: 'Social' });
+  const socialLinks = await LinksModel.find({ userId, linkCategory: 'link' });
 
   if (!socialLinks || socialLinks.length === 0) {
-    const error = new Error('No social links found for the user');
+    const error = new Error('No links found for the user');
     error.status = 404;
     throw error;
   }
@@ -267,7 +255,6 @@ module.exports = {
   updateLink,
   deleteLink,
   getLink,
-  getAllLinksByUserId,
   createClick,
   getNoOfClicksForSocialLinksByUserId,
   getNoOfClicksForShopLinksByUserId,

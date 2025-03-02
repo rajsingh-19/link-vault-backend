@@ -6,7 +6,6 @@ const {
   createLinkHandler,
   updateLinkHandler,
   getLinkHandler,
-  getAllLinksByUserIdHandler,
   createClickHandler,
   getNoOfClicksForSocialLinksByUserIdHandler,
   getNoOfClicksForShopLinksByUserIdHandler,
@@ -23,7 +22,6 @@ router.post('/createLink/:userId', verifyUser, createLinkHandler);
 router.put('/updateLink/:id', verifyUser, updateLinkHandler);
 router.delete('/deleteLink/:id', verifyUser, deleteLinkHandler);
 router.get('/getLink/:id', verifyUser, getLinkHandler);
-router.get('/getAllLinks/:userId', verifyUser, getAllLinksByUserIdHandler);
 router.get(
   '/getAllLinksForSocial/:userId',
   verifyUser,
