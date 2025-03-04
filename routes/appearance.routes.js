@@ -8,7 +8,7 @@ const {
 } = require('../controller/appearance.Controller');
 
 // appearance router
-router.post('/create', verifyUser, createAppearanceHandler);
+router.post('/create/:userId', verifyUser, createAppearanceHandler);
 router.put('/update/:userId', verifyUser, updateAppearanceHandler);
 router.get('/get/:userId', verifyUser, getAppearanceByUserIdHandler);
 

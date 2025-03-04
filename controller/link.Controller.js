@@ -102,8 +102,6 @@ const createClickHandler = async (req, res) => {
   // Access the OS family
   const osFamily = agent.os.family ? agent.os.family.toLowerCase() : null;
 
-  console.log(agent.os);
-
   if (osFamily) {
     if (osFamily === 'android') {
       userDevice = 'android';

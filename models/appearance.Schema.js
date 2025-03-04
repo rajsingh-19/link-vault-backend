@@ -5,6 +5,8 @@ const appearanceSchema = new mongoose.Schema(
     layout: {
       type: String,
       enum: ['Stack', 'Grid', 'Carousel'],
+      default: 'Stack',
+      required: false
     },
     buttons: {
       fill: {
@@ -21,7 +23,9 @@ const appearanceSchema = new mongoose.Schema(
       },
       special: {
         type: String,
-        enum: ['sp1', 'sp2', 'sp3', 'sp4', 'sp5', 'sp6'],
+        enum: ['', 'sp1', 'sp2', 'sp3', 'sp4', 'sp5', 'sp6'],
+        default: '',
+        required: false
       },
       btnColor: {
         type: String,
@@ -41,15 +45,17 @@ const appearanceSchema = new mongoose.Schema(
     themes: {
       type: String,
       enum: [
-        'Air Snow',
-        'Air Grey',
-        'Air Smoke',
-        'Air Black',
-        'Mineral Blue',
-        'Mineral Green',
-        'Mineral Orange',
-        'Mineral Yellow',
+        '#FFFFFF',
+        '#EBEEF1',
+        '#2A3235',
+        '#000000',
+        '#E0F6FF',
+        '#E0FAEE',
+        '#FFEEE2',
+        '#FFF8E0'
       ],
+      default: null,
+      required: false,
     },
     userId: {
       type: mongoose.Schema.Types.ObjectId,

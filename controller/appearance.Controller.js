@@ -5,7 +5,8 @@ const {
 } = require('../services/appearance.service');
 
 const createAppearanceHandler = async (req, res) => {
-  const { layout, buttons, fonts, themes, userId } = req.body;
+  const { userId } = req.params;
+  const { layout, buttons, fonts, themes } = req.body;
 
   try {
     const appearance = await createAppearance(
