@@ -19,7 +19,6 @@ const userSchema = new mongoose.Schema({
   },
   userName: {
     type: String,
-    unique: true,
   },
   category: {
     type: String,
