@@ -10,12 +10,16 @@ dotenv.config();
 const registerUser = async (firstName, lastName, email, password) => {
   const isUserExist = await UserModel.findOne({ email });
 
+  console.log("before");
+
   if (isUserExist) {
     const error = new Error('A User already exist with this email');
     error.status = 400;
     throw error; //Throwing the error to the controller
   }
 
+  console.log("after");
+  
   //  Hash the password
   const salt = await bcrypt.genSalt(10);
   const hashPassword = await bcrypt.hash(password, salt);
