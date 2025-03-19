@@ -10,6 +10,6 @@ const {
 // appearance router
 router.post('/create/:userId', verifyUser, createAppearanceHandler);
 router.put('/update/:userId', verifyUser, updateAppearanceHandler);
-router.get('/get/:userId', verifyUser, getAppearanceByUserIdHandler);
+router.get('/get/:userId', getAppearanceByUserIdHandler);
 
 module.exports = router;

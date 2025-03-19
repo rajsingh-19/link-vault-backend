@@ -21,15 +21,13 @@ const {
 router.post('/createLink/:userId', verifyUser, createLinkHandler);
 router.put('/updateLink/:id', verifyUser, updateLinkHandler);
 router.delete('/deleteLink/:id', verifyUser, deleteLinkHandler);
-router.get('/getLink/:id', verifyUser, getLinkHandler);
+router.get('/getLink/:id', getLinkHandler);
 router.get(
   '/getAllLinksForSocial/:userId',
-  verifyUser,
   getLinksForSocialByUserIdHandler
 );
 router.get(
   '/getAllLinksForShop/:userId',
-  verifyUser,
   getLinksForShopByUserIdHandler
 );
 router.get('/:linkId', createClickHandler);

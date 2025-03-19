@@ -16,8 +16,8 @@ const {
 router.post('/register', registerHandler);
 router.post('/login', loginHandler);
 router.put('/namecategory/:userId', verifyUser, nameCategoryHandler);
-router.get('/info/:userId', verifyUser, infoHandler);
-router.get('/cta/:userId', verifyUser, getCtaCountHandler);
+router.get('/info/:userId', infoHandler);
+router.get('/cta/:userId', getCtaCountHandler);
 router.put('/increment/:userId', verifyUser, incrementCtaCountHandler);
 router.put('/update/:userId', verifyUser, updateHandler);
 router.put('/updateUserInfo/:userId', verifyUser, updateUserInfoHandler)
