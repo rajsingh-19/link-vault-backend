@@ -18,7 +18,7 @@ router.post('/login', loginHandler);
 router.put('/namecategory/:userId', verifyUser, nameCategoryHandler);
 router.get('/info/:userId', infoHandler);
 router.get('/cta/:userId', getCtaCountHandler);
-router.put('/increment/:userId', verifyUser, incrementCtaCountHandler);
+router.put('/increment/:userId', incrementCtaCountHandler);
 router.put('/update/:userId', verifyUser, updateHandler);
 router.put('/updateUserInfo/:userId', verifyUser, updateUserInfoHandler)
 
